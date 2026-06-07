@@ -1,2 +1,52 @@
 # GoogleRapidAgentHackthonJun2026
-This repo is for the Google Rapid Agent Hackthon on Jun2026 in devpost
+This repo is for the Google Rapid Agent Hackthon on Jun2026 in devpost. 
+
+# Goal
+Create an AI agent to access e-commerce websites to obtain infomration about different products and provide the reccomendation for the best product as defined in the user prompt.
+
+# Block diagram
+![Block Diagram](images/System.png)
+
+# File Structure
+- config.py
+  - This file contains
+    - The configuration specifying the model vendor used. Example: For using Ollama models the configutaion is "MODEL_USED = MODEL_DICT["Ollama"]"
+    - List of models for different vendors which is used to decide if the model used in the main file "GoogleHackathon2026Jun.py" is allowed as per this configuration. Done to ensure that model used is intended and there are no monetory consequences.
+
+- utils.py
+  - This is the library of functions needed to
+    - Abstract the functionalities of API access.
+    - Internal functions to provide the list of models specified in config.py for each vendor (exception : list od ollama models are updated by the script since they are offline and free).
+    - Internal function to check if the models used in the mail file "GoogleHackathon2026Jun.py" part of the list specified in config.py.
+    - Functions for testing if the model is responding to basic prompts.
+    - Abstract the AI agent functionality.
+   
+- GoogleHackathon2026Jun.py
+  - This is the main file of the repository.
+  - The object of this file is to specify the user prompt.
+  - Define the tool schema (dictonary format) to be passed to AI agent function in utils.py
+  - Call the AI agent function with the neeeded model, user prompt, and tool schema.
+ 
+- GoogleHackathon2026Jun.ipynb
+  - Jupyter format for debugging and runtime measurements.
+
+# Activity diagram
+![Activity Diagram](images/activity.png)
+
+# Runtime
+Measurements when using Offilne Ollama model
+- Loading libraries - ~7.2 seconds
+- Core function execution - ~45 seconds - 2 minutes
+
+# Known issues
+## When using offline model "qwen2.5:7b"
+- Not all entires in eccomerce websites are listed.
+- User prompt needs to be precise. Example : Use the search tool to find the current price and discounts for a latest iphone on Amazon and Flipkart e-commerce websites and recommend the cheapest and best product.
+- In some examples, when user prompt specifies any e-commerce website. The Agent only looks into amazon website.
+
+## Online model testing
+- Online models have not yet been tested.
+- Specifically Gemini since it was required that financial infomration be first provided to use Gemini API. This could lead to surprise bills if not handled properly.
+  
+## Implementation
+- Although some functions in utils.py are mentioned as internal functions here, they are not restricted yet using private class.
