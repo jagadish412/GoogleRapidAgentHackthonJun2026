@@ -4,6 +4,10 @@ This repo is for the Google Rapid Agent Hackthon on Jun2026 in devpost.
 # Goal
 Create an AI agent to access e-commerce websites to obtain infomration about different products and provide the reccomendation for the best product as defined in the user prompt.
 
+# Usage
+- run "pip install -r requirements.txt" in the repository folder using command window to ensure all needed libraries are installed.
+- If you are using Ollama offline models, ensure Ollama is runnning before running the file "GoogleHackathon2026Jun.py" or "GoogleHackathon2026Jun.ipynb".
+
 # Block diagram
 ![Block Diagram](images/System.png)
 
