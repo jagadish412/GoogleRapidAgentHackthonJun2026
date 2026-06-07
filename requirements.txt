@@ -1,0 +1,19 @@
+#List of libraries used in python for this project
+#PIL
+Pillow
+
+#for Ollama models api access
+ollama
+
+#for OpenAI models api access
+openai
+
+#for Gemini models api access
+google-genai
+
+#for Anthropic models api access
+anthropic
+
+#for tavily websearch api access
+tavily-python
+
