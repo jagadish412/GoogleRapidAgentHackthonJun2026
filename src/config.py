@@ -1,6 +1,21 @@
+#API keys
+"Below are the names used when environmental variables are created for respective model vendors"
+ANTHROPIC_API_KEY = "dummy"
+OPEN_AI_API_KEY = "OpenAIKey_Json55"
+GEMINI_API_KEY = "GeminiAPIKey_Json55"
+TAVILY_API_KEY      = "TavilyAPIKeyJson55" #Web search AI tool
+
 #models from different vendors
 ollama_models = [] #since tokens are free we check everytime which models are present and update the list using the script.
-openai_models = ""
+openai_models = [
+    "gpt-5",
+    "gpt-5-mini",
+    "gpt-5-nano",
+    "gpt-4.1",
+    "gpt-4.1-mini",
+    "gpt-4o",
+    "gpt-4o-mini"
+    ]
 anthropic_models = ""
 
 #gemini models - manually updated
@@ -42,11 +57,16 @@ gemini_models = [
     ]
 
 #model dictionary
-MODEL_DICT = {
+MODEL_VENDOR_DICT = {
     "Ollama": "ollama",
-    "Openai": "openAi",
+    "Openai": "openai",
     "Gemini": "gemini",
     "Anthropic": "anthropic"
 }
 # CONFIGURATION = Specify which model is used
-MODEL_USED = MODEL_DICT["Ollama"] #select from the list model_vendors
+MODEL_VENDOR_USED = MODEL_VENDOR_DICT["Ollama"] #select from the list model_vendors
+
+# Specific which model is used
+OLLAMA_MODEL = "qwen2.5:7b"
+GEMINI_MODEL = "gpt-4.1"
+OPEN_AI_MODEL = "gemini-2.5-flash"

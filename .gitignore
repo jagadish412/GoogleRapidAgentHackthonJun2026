@@ -1,0 +1,12 @@
+# Ignore log files
+*.log
+
+#Ignore python cache files
+src/__pycache__/
+
+#Ignore temporary asciidoctor folder
+asciidoctor/
+
+#Ignore temporary graphify folder if present
+graphify-out/
+

@@ -5,8 +5,41 @@ This repo is for the Google Rapid Agent Hackthon on Jun2026 in devpost.
 Create an AI agent to access e-commerce websites to obtain infomration about different products and provide the reccomendation for the best product as defined in the user prompt.
 
 # Usage
+## Target 
+- WINDOWS
+- Python version 3.12 or above
+
+## Prerequisites
 - run "pip install -r requirements.txt" in the repository folder using command window to ensure all needed libraries are installed.
-- If you are using Ollama offline models, ensure Ollama is runnning before running the file "GoogleHackathon2026Jun.py" or "GoogleHackathon2026Jun.ipynb".
+- Since the testing was done with ollama model Please, ensure Ollama is installed and runnning before running the file "GoogleHackathon2026Jun.py"
+- Exact model used can be configured in config.py under the below section
+> OLLAMA_MODEL = "qwen2.5:7b"
+
+> GEMINI_MODEL = "gpt-4.1"
+
+> OPEN_AI_MODEL = "gemini-2.5-flash"
+### Configuring the environmental variables for API keys
+- Please ensure below environmental variables are defined in your PC, as per the configurations mentioned in config.py. No need to define environment variable if only ollama model is used.
+  - For the below configuration in config.py
+
+  >ANTHROPIC_API_KEY = "dummy"
+
+  >OPEN_AI_API_KEY = "OpenAIKey_Json55"
+
+  >GEMINI_API_KEY = "GeminiAPIKey_Json55"
+
+  >TAVILY_API_KEY      = "TavilyAPIKeyJson55" #Web search AI tool
+
+      - Tavily API 
+        - name : TavilyAPIKeyJson55
+        - value: API key from tavily
+      - If Gemini/OpenAi models are used please ensure below environmental variables are defined in your PC
+        - OpenAI API 
+          - name : OpenAIKey_Json55
+          - value: API key from tavily
+        - Gemini API 
+          - name : GeminiAPIKey_Json55
+          - value: API key from tavily
 
 # Block diagram
 ![Block Diagram](images/System.png)
@@ -14,7 +47,7 @@ Create an AI agent to access e-commerce websites to obtain infomration about dif
 # File Structure
 - config.py
   - This file contains
-    - The configuration specifying the model vendor used. Example: For using Ollama models the configutaion is "MODEL_USED = MODEL_DICT["Ollama"]"
+    - The configuration specifying the model vendor used. Example: For using Ollama models the configutaion is "MODEL_VENDOR_USED = MODEL_VENDOR_DICT["Ollama"]"
     - List of models for different vendors which is used to decide if the model used in the main file "GoogleHackathon2026Jun.py" is allowed as per this configuration. Done to ensure that model used is intended and there are no monetory consequences.
 
 - utils.py
@@ -30,17 +63,12 @@ Create an AI agent to access e-commerce websites to obtain infomration about dif
   - The object of this file is to specify the user prompt.
   - Define the tool schema (dictonary format) to be passed to AI agent function in utils.py
   - Call the AI agent function with the neeeded model, user prompt, and tool schema.
- 
-- GoogleHackathon2026Jun.ipynb
-  - Jupyter format for debugging and runtime measurements.
+
+- toolschemaGen.py
+  - Converts native tool information to model venor specific tool schema
 
 # Activity diagram
 ![Activity Diagram](images/activity.png)
-
-# Runtime
-Measurements when using Offilne Ollama model
-- Loading libraries - ~7.2 seconds
-- Core function execution - ~45 seconds - 2 minutes
 
 # Known issues
 ## When using offline model "qwen2.5:7b"
@@ -49,7 +77,7 @@ Measurements when using Offilne Ollama model
 - In some examples, when user prompt specifies any e-commerce website. The Agent only looks into amazon website.
 
 ## Online model testing
-- Online models have not yet been tested.
+- Online models have not been tested due to monetory constraints.
 - Specifically Gemini since it was required that financial infomration be first provided to use Gemini API. This could lead to surprise bills if not handled properly.
   
 ## Implementation

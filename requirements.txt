@@ -17,3 +17,5 @@ anthropic
 #for tavily websearch api access
 tavily-python
 
+#tkinker for GUI
+tkinter
