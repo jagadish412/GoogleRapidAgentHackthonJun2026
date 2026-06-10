@@ -12,6 +12,7 @@ Create an AI agent to access e-commerce websites to obtain infomration about dif
 ## Prerequisites
 - run "pip install -r requirements.txt" in the repository folder using command window to ensure all needed libraries are installed.
 - Since the testing was done with ollama model Please, ensure Ollama is installed and runnning before running the file "GoogleHackathon2026Jun.py"
+- Specify the model vendor that you are using in config.py under "MODEL_VENDOR_USED" variable.
 - Exact model used can be configured in config.py under the below section
 > OLLAMA_MODEL = "qwen2.5:7b"
 
